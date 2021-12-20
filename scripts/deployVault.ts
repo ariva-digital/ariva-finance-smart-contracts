@@ -25,22 +25,22 @@ async function main(): Promise<void> {
   // We get the contract to deploy
 
   // construction params
-  const paramData = config.bsct;
-  const params = [paramData.token, paramData.lockupDuration];
+  const paramsData = config.bsct;
+  const params = [paramsData.token, paramsData.staking, paramsData.treasury];
 
-  const StakingFactory: ContractFactory = await ethers.getContractFactory("Staking");
-  const staking: Contract = await upgrades.deployProxy(StakingFactory, params, {
+  const VaultFactory: ContractFactory = await ethers.getContractFactory("Vault");
+  const vault: Contract = await upgrades.deployProxy(VaultFactory, params, {
     initializer: "initialize",
   });
-  await staking.deployed();
-  console.log("Staking deployed to:", staking.address);
-  const stakingImplementation = await getImplementationAddress(staking.address);
+  await vault.deployed();
+  console.log("Vault deployed to:", vault.address);
+  const vaultImplementation = await getImplementationAddress(vault.address);
 
   await waitSeconds(25);
 
   await hre.run("verify:verify", {
-    address: stakingImplementation,
-    contract: "contracts/staking/Staking.sol:Staking",
+    address: vaultImplementation,
+    contract: "contracts/staking/Vault.sol:Vault",
     constructorArguments: [],
   });
 }

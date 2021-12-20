@@ -242,16 +242,26 @@ contract Staking is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
         }
     }
 
+    /**
+     * @notice Withdraw unexpected tokens sent to the Staking
+     */
     function withdrawAnyToken(IERC20 _token, uint256 amount) external onlyOwner {
+        require(address(_token) != address(token), "Token cannot be same as deposit token");
         _token.safeTransfer(msg.sender, amount);
     }
 
+    /**
+     * @notice set startBlock of staking
+     */
     function startStaking(uint256 startBlock) external onlyOwner {
         require(poolInfo.lastRewardBlock == 0, "Staking already started");
         poolInfo.lastRewardBlock = startBlock;
         emit StakingStarted(startBlock);
     }
 
+    /**
+     * @notice set token per block
+     */
     function setTokenPerBlock(uint256 _tokenPerBlock) external onlyOwner {
         require(_tokenPerBlock > 0, "Token per block should be greater than 0!");
         tokenPerBlock = _tokenPerBlock;
@@ -259,6 +269,9 @@ contract Staking is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
         emit RewardPerBlockChanged(_tokenPerBlock);
     }
 
+    /**
+     * @notice set fee info
+     */
     function setFeeInfo(uint256 _emergencyWithdrawFee, uint256 _withdrawFee) external onlyOwner {
         require(_emergencyWithdrawFee < FEE_MULTIPLIER, "Invalid emergencyWithdrawFee");
         require(_withdrawFee < _emergencyWithdrawFee, "Invalid withdrawFee");
@@ -267,6 +280,9 @@ contract Staking is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
         withdrawFee = _withdrawFee;
     }
 
+    /**
+     * @notice exclude from fee (this function is for vault)
+     */
     function excludeFromFee(address addr, bool isWhitelisted) external onlyOwner {
         isWhitelistedFromFee[addr] = isWhitelisted;
     }
