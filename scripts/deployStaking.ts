@@ -25,7 +25,7 @@ async function main(): Promise<void> {
   // We get the contract to deploy
 
   // construction params
-  const paramData = config.bsct;
+  const paramData = config.bsc;
   const params = [paramData.token, paramData.lockupDuration];
 
   const StakingFactory: ContractFactory = await ethers.getContractFactory("Staking");

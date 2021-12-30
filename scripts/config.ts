@@ -2,8 +2,8 @@ const config = {
   bsc: {
     token: "0x6679eb24f59dfe111864aec72b443d1da666b360",
     lockupDuration: 3 * 24 * 3600,
-    staking: "",
-    treasury: "",
+    staking: "0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa",
+    treasury: "0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa",
   },
   bsct: {
     token: "0x40D72277A87ae721232893E863626bdf6240c206",
