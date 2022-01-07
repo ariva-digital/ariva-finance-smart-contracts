@@ -20,6 +20,7 @@ const chainIds = {
   hardhat: 31337,
   bsc: 56,
   bsct: 97,
+  mainnet: 1,
 };
 
 // Ensure that we have all the environment variables we need.
@@ -57,6 +58,12 @@ const config: HardhatUserConfig = {
       url: "https://data-seed-prebsc-1-s1.binance.org:8545/",
       chainId: chainIds.bsct,
     },
+    mainnet: {
+      accounts: [PRIVATEKEY],
+      url: "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+      chainId: chainIds.mainnet,
+      gasPrice: 100000000000,
+    },
   },
   paths: {
     artifacts: "./artifacts",
@@ -86,8 +93,8 @@ const config: HardhatUserConfig = {
     },
   },
   etherscan: {
-    // apiKey: process.env.ETHERSCAN,
-    apiKey: process.env.BSCSCAN,
+    apiKey: process.env.ETHERSCAN,
+    // apiKey: process.env.BSCSCAN,
   },
   mocha: {
     timeout: 200000,

@@ -16,3 +16,8 @@
 - ARV: [0x6679eb24f59dfe111864aec72b443d1da666b360](https://bscscan.com/address/0x6679eb24f59dfe111864aec72b443d1da666b360)
 - Staking: [0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa](https://bscscan.com/address/0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa)
 - Vault: [0x4fF3be477c4907ABAAEF0b11eaFDfAE0c6238a10](https://bscscan.com/address/0x4fF3be477c4907ABAAEF0b11eaFDfAE0c6238a10)
+
+# Ethereum Mainnet
+
+- ARV: [0x79c7ef95ad32dcd5ecadb231568bb03df7824815](https://etherscan.io/address/0x79c7ef95ad32dcd5ecadb231568bb03df7824815)
+- Staking: [0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa](https://etherscan.io/address/0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa)

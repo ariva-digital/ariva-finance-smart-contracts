@@ -11,6 +11,7 @@ const config = {
     staking: "0xC2C28d7f58DEEDc674547B42aBE2F4EE2c49Ad9f",
     treasury: "0xb26B59977EED6756e73D0B3BA102780c06C54569",
   },
+  mainnet: { token: "0x79c7ef95ad32dcd5ecadb231568bb03df7824815", lockupDuration: 3 * 24 * 3600 },
 };
 
 export default config;
