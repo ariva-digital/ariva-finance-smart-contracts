@@ -5,6 +5,9 @@
 - Deploy Vault
 - Call Staking.excludeFromFee(Vault.address, true)
 
+## Deploy Farming
+  - call Farming.add
+
 # BSCT Contracts
 
 - TestToken: [0x40D72277A87ae721232893E863626bdf6240c206](https://testnet.bscscan.com/address/0x40D72277A87ae721232893E863626bdf6240c206)
