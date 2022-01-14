@@ -42,6 +42,8 @@ contract Farming is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
     uint256 public constant FEE_MULTIPLIER = 10000;
     address public treasury;
 
+    uint256 public constant SHARE_MULTIPLIER = 1e12;
+
     event Deposit(address indexed user, uint256 indexed pid, uint256 amount);
     event Withdraw(address indexed user, uint256 indexed pid, uint256 amount);
     event Claim(address indexed user, uint256 indexed pid, uint256 amount);
@@ -96,9 +98,9 @@ contract Farming is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
         if (block.number > pool.lastRewardBlock && lpSupply != 0) {
             uint256 multiplier = getMultiplier(pool.lastRewardBlock, block.number);
             uint256 tokenReward = (multiplier * (tokenPerBlock) * (pool.allocPoint)) / (totalAllocPoint);
-            accTokenPerShare = accTokenPerShare + ((tokenReward * (1e12)) / (lpSupply));
+            accTokenPerShare = accTokenPerShare + ((tokenReward * (SHARE_MULTIPLIER)) / (lpSupply));
         }
-        return (user.amount * (accTokenPerShare)) / (1e12) - (user.rewardDebt) + (user.pendingRewards);
+        return (user.amount * (accTokenPerShare)) / (SHARE_MULTIPLIER) - (user.rewardDebt) + (user.pendingRewards);
     }
 
     function massUpdatePools() public {
@@ -120,7 +122,7 @@ contract Farming is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
         }
         uint256 multiplier = getMultiplier(pool.lastRewardBlock, block.number);
         uint256 tokenReward = (multiplier * (tokenPerBlock) * (pool.allocPoint)) / (totalAllocPoint);
-        pool.accTokenPerShare = pool.accTokenPerShare + ((tokenReward * (1e12)) / (lpSupply));
+        pool.accTokenPerShare = pool.accTokenPerShare + ((tokenReward * (SHARE_MULTIPLIER)) / (lpSupply));
         pool.lastRewardBlock = block.number;
     }
 
@@ -129,7 +131,7 @@ contract Farming is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
         UserInfo storage user = userInfo[_pid][msg.sender];
         updatePool(_pid);
         if (user.amount > 0) {
-            uint256 pending = (user.amount * (pool.accTokenPerShare)) / (1e12) - (user.rewardDebt);
+            uint256 pending = (user.amount * (pool.accTokenPerShare)) / (SHARE_MULTIPLIER) - (user.rewardDebt);
 
             if (pending > 0) {
                 user.pendingRewards = user.pendingRewards + (pending);
@@ -143,7 +145,7 @@ contract Farming is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
             user.amount = user.amount + (_amount);
             user.lastClaim = block.timestamp;
         }
-        user.rewardDebt = (user.amount * (pool.accTokenPerShare)) / (1e12);
+        user.rewardDebt = (user.amount * (pool.accTokenPerShare)) / (SHARE_MULTIPLIER);
         emit Deposit(msg.sender, _pid, _amount);
     }
 
@@ -160,7 +162,7 @@ contract Farming is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
 
         updatePool(_pid);
 
-        uint256 pending = (user.amount * (pool.accTokenPerShare)) / (1e12) - (user.rewardDebt);
+        uint256 pending = (user.amount * (pool.accTokenPerShare)) / (SHARE_MULTIPLIER) - (user.rewardDebt);
         if (pending > 0) {
             user.pendingRewards = user.pendingRewards + (pending);
             safeTokenTransfer(msg.sender, user.pendingRewards);
@@ -179,7 +181,7 @@ contract Farming is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
             }
         }
 
-        user.rewardDebt = (user.amount * (pool.accTokenPerShare)) / (1e12);
+        user.rewardDebt = (user.amount * (pool.accTokenPerShare)) / (SHARE_MULTIPLIER);
 
         emit Withdraw(msg.sender, _pid, _amount);
     }
