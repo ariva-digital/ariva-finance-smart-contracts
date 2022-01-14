@@ -40,7 +40,7 @@ async function main(): Promise<void> {
 
   await hre.run("verify:verify", {
     address: farmingImplementation,
-    contract: "contracts/farming/Farming.sol:Farming",
+    contract: "contracts/staking/Farming.sol:Farming",
     constructorArguments: [],
   });
 }
