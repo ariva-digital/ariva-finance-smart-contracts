@@ -46,6 +46,8 @@ contract Farming is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
     event Withdraw(address indexed user, uint256 indexed pid, uint256 amount);
     event Claim(address indexed user, uint256 indexed pid, uint256 amount);
     event RewardPerBlockChanged(uint256 reward);
+    event Pause();
+    event Unpause();
 
     function initialize(
         IERC20 _token,
@@ -247,5 +249,15 @@ contract Farming is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
         require(_emergencyWithdrawFee > 0, "Fee can't be 0");
 
         emergencyWithdrawFee = _emergencyWithdrawFee;
+    }
+
+    function pause() external onlyOwner whenNotPaused {
+        _pause();
+        emit Pause();
+    }
+
+    function unpause() external onlyOwner whenPaused {
+        _unpause();
+        emit Unpause();
     }
 }
