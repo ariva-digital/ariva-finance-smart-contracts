@@ -7,6 +7,11 @@ const config = {
     staking: "0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa",
     treasury: "0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa",
     farmingTreasury: "0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa",
+    vrfCoordinator: "0x747973a5A2a4Ae1D3a8fDF5479f1514F65Db9C31",
+    linkToken: "0x404460C6A5EdE2D891e8297795264fDe62ADBB75",
+    lotteryOperator: "",
+    lotteryTreasury: "",
+    lotteryInjector: "",
   },
   bsct: {
     token: "0x40D72277A87ae721232893E863626bdf6240c206",
@@ -16,6 +21,11 @@ const config = {
     staking: "0xC2C28d7f58DEEDc674547B42aBE2F4EE2c49Ad9f",
     treasury: "0xb26B59977EED6756e73D0B3BA102780c06C54569",
     farmingTreasury: "0xb26B59977EED6756e73D0B3BA102780c06C54569",
+    vrfCoordinator: "0xa555fC018435bef5A13C6c6870a9d4C11DEC329C",
+    linkToken: "0x84b9B910527Ad5C03A9Ca831909E21e236EA7b06",
+    lotteryOperator: "",
+    lotteryTreasury: "",
+    lotteryInjector: "",
   },
   mainnet: {
     token: "0x79c7ef95ad32dcd5ecadb231568bb03df7824815",
@@ -24,6 +34,11 @@ const config = {
     startBlock: 30000,
     treasury: "0xb26B59977EED6756e73D0B3BA102780c06C54569",
     farmingTreasury: "0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa",
+    vrfCoordinator: "",
+    linkToken: "",
+    lotteryOperator: "",
+    lotteryTreasury: "",
+    lotteryInjector: "",
   },
 };
 
