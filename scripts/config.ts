@@ -2,7 +2,7 @@ const config = {
   bsc: {
     token: "0x6679eb24f59dfe111864aec72b443d1da666b360",
     lockupDuration: 3 * 24 * 3600,
-    tokenPerBlock: 3 * 10 ** 18,
+    tokenPerBlock: 3 * 10 ** 8,
     startBlock: 30000,
     staking: "0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa",
     treasury: "0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa",
@@ -14,11 +14,11 @@ const config = {
     lotteryInjector: "",
   },
   bsct: {
-    token: "0x40D72277A87ae721232893E863626bdf6240c206",
+    token: "0xCB28c17F016bF3b0162bA280C385990658385Ba6",
     lockupDuration: 3 * 24 * 3600,
-    tokenPerBlock: "3000000000000000000",
+    tokenPerBlock: "300000000",
     startBlock: 30000,
-    staking: "0xC2C28d7f58DEEDc674547B42aBE2F4EE2c49Ad9f",
+    staking: "0xf15aa1abCDF8094e82F9FA7EB8c3fEBB7C53966E",
     treasury: "0xb26B59977EED6756e73D0B3BA102780c06C54569",
     farmingTreasury: "0xb26B59977EED6756e73D0B3BA102780c06C54569",
     vrfCoordinator: "0xa555fC018435bef5A13C6c6870a9d4C11DEC329C",

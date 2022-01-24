@@ -6,16 +6,17 @@
 - Call Staking.excludeFromFee(Vault.address, true)
 
 ## Deploy Farming
-  - call Farming.add
+
+- call Farming.add
 
 # BSCT Contracts
 
-- TestToken: [0x40D72277A87ae721232893E863626bdf6240c206](https://testnet.bscscan.com/address/0x40D72277A87ae721232893E863626bdf6240c206)
-- Staking: [0xC2C28d7f58DEEDc674547B42aBE2F4EE2c49Ad9f](https://testnet.bscscan.com/address/0xC2C28d7f58DEEDc674547B42aBE2F4EE2c49Ad9f)
-- Vault: [0xeE31B694d74d738238F2711d931A940866877A7C](https://testnet.bscscan.com/address/0xeE31B694d74d738238F2711d931A940866877A7C)
+- Test ARVToken: [0xCB28c17F016bF3b0162bA280C385990658385Ba6](https://testnet.bscscan.com/address/0xCB28c17F016bF3b0162bA280C385990658385Ba6)
+- Staking: [0x633C33FB087bCCb84A344ec7a7c86599da0EA7b6](https://testnet.bscscan.com/address/0x633C33FB087bCCb84A344ec7a7c86599da0EA7b6)
+- Vault: [0x7dB41468F10CfF85f9D914F8E61b735b36D9C42C](https://testnet.bscscan.com/address/0x7dB41468F10CfF85f9D914F8E61b735b36D9C42C)
 - Test WBNB Token: [0x757216Ff8E464E461F5f45A075FBC373D520A364]:(https://testnet.bscscan.com/address/0x757216Ff8E464E461F5f45A075FBC373D520A364)
-- Test LP Token: [0xf502ada99119320852b825e661701ab00e05897f](https://testnet.bscscan.com/0xf502ada99119320852b825e661701ab00e05897f)
-- Farming: [0x529aED06F1972dB5116fC78b1934F445A5832a4D](https://testnet.bscscan.com/0x529aED06F1972dB5116fC78b1934F445A5832a4D)
+- Test LP Token: [0x98be1e214d0d3a178738adc33c4ce32b25c195ca](https://testnet.bscscan.com/address/0x98be1e214d0d3a178738adc33c4ce32b25c195ca)
+- Farming: [0xfB18FFC0A537B7cB447B498294F3125088448AD6](https://testnet.bscscan.com/address/0xfB18FFC0A537B7cB447B498294F3125088448AD6)
 
 # BSC Contracts
 

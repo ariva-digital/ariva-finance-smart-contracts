@@ -134,10 +134,10 @@ contract Farming is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
             uint256 pending = (user.amount * (pool.accTokenPerShare)) / (SHARE_MULTIPLIER) - (user.rewardDebt);
 
             if (pending > 0) {
-                user.pendingRewards = user.pendingRewards + (pending);
-                safeTokenTransfer(msg.sender, user.pendingRewards);
-                emit Claim(msg.sender, _pid, user.pendingRewards);
-                user.pendingRewards = 0;
+                user.pendingRewards = user.pendingRewards + pending;
+                uint256 claimedAmount = safeTokenTransfer(msg.sender, user.pendingRewards);
+                emit Claim(msg.sender, _pid, claimedAmount);
+                user.pendingRewards -= claimedAmount;
             }
         }
         if (_amount > 0) {
@@ -164,10 +164,10 @@ contract Farming is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
 
         uint256 pending = (user.amount * (pool.accTokenPerShare)) / (SHARE_MULTIPLIER) - (user.rewardDebt);
         if (pending > 0) {
-            user.pendingRewards = user.pendingRewards + (pending);
-            safeTokenTransfer(msg.sender, user.pendingRewards);
-            emit Claim(msg.sender, _pid, user.pendingRewards);
-            user.pendingRewards = 0;
+            user.pendingRewards = user.pendingRewards + pending;
+            uint256 claimedAmount = safeTokenTransfer(msg.sender, user.pendingRewards);
+            emit Claim(msg.sender, _pid, claimedAmount);
+            user.pendingRewards -= claimedAmount;
         }
 
         if (_amount > 0) {
@@ -186,12 +186,14 @@ contract Farming is Initializable, OwnableUpgradeable, ReentrancyGuardUpgradeabl
         emit Withdraw(msg.sender, _pid, _amount);
     }
 
-    function safeTokenTransfer(address _to, uint256 _amount) internal {
+    function safeTokenTransfer(address _to, uint256 _amount) internal returns (uint256) {
         uint256 tokenBal = token.balanceOf(address(this));
         if (_amount > tokenBal) {
             token.safeTransfer(_to, tokenBal);
+            return tokenBal;
         } else {
             token.safeTransfer(_to, _amount);
+            return _amount;
         }
     }
 
