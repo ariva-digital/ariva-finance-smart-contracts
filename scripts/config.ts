@@ -6,7 +6,7 @@ const config = {
     startBlock: 30000,
     staking: "0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa",
     treasury: "0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa",
-    farmingTreasury: "0xDaEaB0D03313B0cfe5881A155C0cFaE52013F9Fa",
+    farmingTreasury: "0x02b28020a74037F6420C92827138DC51ECB0EE5b",
     vrfCoordinator: "0x747973a5A2a4Ae1D3a8fDF5479f1514F65Db9C31",
     linkToken: "0x404460C6A5EdE2D891e8297795264fDe62ADBB75",
     lotteryOperator: "",
