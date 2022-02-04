@@ -3,7 +3,7 @@ import { Contract, ContractFactory } from "ethers";
 // but useful for running the script in a standalone fashion through `node <script>`.
 // When running the script with `hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
-import { ethers } from "hardhat";
+import hre, { ethers } from "hardhat";
 import { waitSeconds } from "./utils";
 import config from "./config";
 
@@ -35,6 +35,14 @@ async function main(): Promise<void> {
   await randomNumberGenerator.setLotteryAddress(arivaLottery.address);
 
   await arivaLottery.setOperatorAndTreasuryAndInjectorAddresses(params.lotteryOperator, params.lotteryTreasury, params.lotteryInjector);
+
+  await waitSeconds(25);
+
+  await hre.run("verify:verify", {
+    address: arivaLottery.address,
+    contract: "contracts/lottery/ArivaLottery.sol:ArivaLottery",
+    constructorArguments: [params.token, randomNumberGenerator.address],
+  });
 }
 
 // We recommend this pattern to be able to use async/await everywhere
