@@ -28,8 +28,8 @@ contract ArivaLottery is ReentrancyGuard, IArivaLottery, Ownable {
 
     uint256 public maxNumberTicketsPerBuyOrClaim = 100;
 
-    uint256 public maxPriceTicketInArv = 50 ether;
-    uint256 public minPriceTicketInArv = 0.005 ether;
+    uint256 public maxPriceTicketInArv = 50000 * 10**8;
+    uint256 public minPriceTicketInArv = 0.005 * 10**8;
 
     uint256 public pendingInjectionNextLottery;
 
