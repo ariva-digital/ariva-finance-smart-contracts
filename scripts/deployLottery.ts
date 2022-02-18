@@ -39,6 +39,12 @@ async function main(): Promise<void> {
   await waitSeconds(25);
 
   await hre.run("verify:verify", {
+    address: randomNumberGenerator.address,
+    contract: "contracts/lottery/RandomNumberGenerator.sol:RandomNumberGenerator",
+    constructorArguments: [params.vrfCoordinator, params.linkToken],
+  });
+
+  await hre.run("verify:verify", {
     address: arivaLottery.address,
     contract: "contracts/lottery/ArivaLottery.sol:ArivaLottery",
     constructorArguments: [params.token, randomNumberGenerator.address],
