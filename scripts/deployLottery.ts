@@ -33,6 +33,8 @@ async function main(): Promise<void> {
   console.log("ArivaLottery deployed to:", arivaLottery.address);
 
   await randomNumberGenerator.setLotteryAddress(arivaLottery.address);
+  await randomNumberGenerator.setFee(params.fee);
+  await randomNumberGenerator.setKeyHash(params.keyHash);
 
   await arivaLottery.setOperatorAndTreasuryAndInjectorAddresses(params.lotteryOperator, params.lotteryTreasury, params.lotteryInjector);
 
